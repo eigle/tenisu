@@ -28,4 +28,11 @@ public class PlayerController {
         return playerService.getPlayersByRank(pageable);
     }
 
+    @GetMapping("/player/{id}")
+    public ResponseEntity<Player> getOne(@PathVariable Long id) {
+        return playerService.getOne(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }

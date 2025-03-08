@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService {
@@ -20,6 +21,10 @@ public class PlayerService {
      */
     public Page<Player> getPlayersByRank(Pageable pageable) {
         return playerRepository.findAllByRank(pageable);
+    }
+
+    public Optional<Player> getOne(Long id) {
+        return playerRepository.findById(id);
     }
 
 }
