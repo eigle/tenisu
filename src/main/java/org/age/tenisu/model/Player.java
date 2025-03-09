@@ -33,15 +33,15 @@ public class Player {
     @Getter
     public static class PlayerData {
 
-        private int rank;
+        private Integer rank;
 
-        private int points;
+        private Integer points;
 
-        private int weight;
+        private Integer weight;
 
-        private int height;
+        private Integer height;
 
-        private int age;
+        private Integer age;
 
         @ElementCollection
         private List<Integer> last;
