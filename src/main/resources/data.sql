@@ -11,7 +11,7 @@ INSERT INTO player (id, first_name, last_name, short_name, sex, country_code, pi
     VALUES
         (52, 'Novak', 'Djokovic', 'N.DJO', 'M', 'SRB', 'https://tenisu.latelier.co/resources/Djokovic.png', 2, 2542, 80000, 188, 31),
         (95, 'Venus', 'Williams', 'V.WIL', 'F', 'USA', 'https://tenisu.latelier.co/resources/Venus.webp', 52, 1105, 74000, 185, 38),
-        (65, 'Stan', 'Wawrinka', 'S.WAW', 'M', 'SUI', 'https://tenisu.latelier.co/resources/Wawrinka.png', 21, 1784, 81000, 183, 33),
+        (65, 'Stan', 'd', 'S.WAW', 'M', 'SUI', 'https://tenisu.latelier.co/resources/Wawrinka.png', 21, 1784, 81000, 183, 33),
         (102, 'Serena', 'Williams', 'S.WIL', 'F', 'USA', 'https://tenisu.latelier.co/resources/Serena.png', 10, 3521, 72000, 175, 37),
         (17, 'Rafael', 'Nadal', 'R.NAD', 'M', 'ESP', 'https://tenisu.latelier.co/resources/Nadal.png', 1, 1982, 85000, 185, 33);
 
