@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "f569d4ff-5abb-4a00-99b9-9c2387d6d594",
+		"name": "tenisu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42900665"
+	},
+	"item": [
+		{
+			"name": "get all players",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get one player",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/players/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"players",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get media height",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/players/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"players",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get average bmi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistics/players/bmi/average",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistics",
+						"players",
+						"bmi",
+						"average"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get best ratio country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistics/players/bmi/average",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistics",
+						"players",
+						"bmi",
+						"average"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
