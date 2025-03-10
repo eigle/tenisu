@@ -3,13 +3,16 @@ package org.age.tenisu.service;
 import jakarta.transaction.Transactional;
 import org.age.tenisu.model.Country;
 import org.age.tenisu.model.Player;
+import org.age.tenisu.repository.PlayerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.within;
@@ -20,6 +23,9 @@ public class PlayerServiceTest {
 
     @Autowired
     private PlayerService playerService;
+
+    @Autowired
+    private PlayerRepository playerRepository;
 
     @Test
     public void testGetPlayersByRank() {
@@ -40,6 +46,26 @@ public class PlayerServiceTest {
     }
 
     @Test
+    public void testCalculateMedianEmpty() {
+        playerRepository.deleteAll();
+        Optional<Double> median = playerService.calculateMedianHeight();
+
+        assertThat(median).isNotPresent();
+    }
+
+    @Test
+    public void testCalculateMedianOnTwoPlayers() {
+        // Delete all players except two
+        playerRepository.deleteAll(playerService.getPlayersByRank(
+                PageRequest.of(0, 3)).getContent());
+
+        Optional<Double> median = playerService.calculateMedianHeight();
+
+        assertThat(median).isPresent().get()
+                .isEqualTo(184.0);
+    }
+
+    @Test
     public void testCalculateAverageBmi() {
         Optional<Double> averageBmi = playerService.calculateAverageBmi();
 
@@ -53,7 +79,21 @@ public class PlayerServiceTest {
 
         assertThat(bestCountry).isPresent();
         assertThat(bestCountry.get().getCode()).isEqualTo("SRB");
-    }
 
+        // Create loose streaking Serbian player
+        var data = new Player.PlayerData();
+        data.setLast(List.of(0, 0, 0, 0, 0));
+        var serbianPlayer = new Player();
+        serbianPlayer.setId(1L);
+        serbianPlayer.setCountry(bestCountry.get());
+        serbianPlayer.setData(data);
+
+        playerRepository.save(serbianPlayer);
+
+        bestCountry = playerService.findCountryByPlayerRatio();
+
+        assertThat(bestCountry).isPresent();
+        assertThat(bestCountry.get().getCode()).isEqualTo("SUI");
+    }
 
 }

@@ -1,15 +1,13 @@
 package org.age.tenisu.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 
 @Entity
-@ToString
-@Getter
+@Data
 public class Player {
 
     @Id
@@ -29,8 +27,7 @@ public class Player {
     private PlayerData data;
 
     @Embeddable
-    @ToString
-    @Getter
+    @Data
     public static class PlayerData {
 
         private Integer rank;
